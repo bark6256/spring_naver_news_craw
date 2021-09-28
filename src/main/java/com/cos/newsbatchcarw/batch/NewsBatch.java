@@ -2,6 +2,7 @@ package com.cos.newsbatchcarw.batch;
 
 import java.util.List;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +20,11 @@ public class NewsBatch {
 	
 	int num = 1;
 	
-	
+	@Bean
+	public void run() throws Exception {
+		System.out.println("서버 시작");
+		newsRepository.deleteAll();
+	}
 	
 	@Scheduled(fixedDelay = 1000 * 60)
 	public void NewsCrawAndSave() {
