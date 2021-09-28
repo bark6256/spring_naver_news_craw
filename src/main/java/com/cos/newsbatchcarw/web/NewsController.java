@@ -17,12 +17,9 @@ import lombok.RequiredArgsConstructor;
 public class NewsController {
 
 	private final NewsRepository newsRepository;
-	private final NaverNewsCraw naverNewsCraw;
 
 	@GetMapping("/news")
 	public CMRespDto<List<News>> findAll() {
-		List<News> newsList = naverNewsCraw.newsCraw5();
-		newsRepository.saveAll(newsList);
 		return new CMRespDto<>(1, "성공", newsRepository.findAll());
 	}
 }
