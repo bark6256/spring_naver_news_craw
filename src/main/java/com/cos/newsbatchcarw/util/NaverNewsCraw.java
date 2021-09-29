@@ -24,8 +24,9 @@ public class NaverNewsCraw {
 			String url = "https://news.naver.com/main/read.naver?mode=LSD&mid=shm&sid1=102&oid=022&aid=" + aid;
 			String html = rt.getForObject(url, String.class);
 
-			Document doc = Jsoup.parse(html);
 			try {
+				Document doc = Jsoup.parse(html);
+				
 				Element companyElement = doc.selectFirst(".press_logo img");
 				Element titleElement = doc.selectFirst("#articleTitle");
 				Element createdAtElement = doc.selectFirst(".t11");
